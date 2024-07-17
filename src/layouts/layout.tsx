@@ -1,6 +1,6 @@
 import Main from './main';
 import Header from './header';
-import Nav from './nav';
+import Nav from 'src/layouts/nav';
 
 // ----------------------------------------------------------------------
 

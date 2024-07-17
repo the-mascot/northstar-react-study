@@ -13,6 +13,18 @@ export function useNavData() {
         title: 'useEffect Test',
         path: paths.test.useEffect
       },
+      {
+        title: 'render Test',
+        path: paths.test.render
+      },
+      {
+        title: 'useMemo Test',
+        path: paths.test.useMemo
+      },
+      {
+        title: 'useCallback Test',
+        path: paths.test.useCallback
+      },
     ],
     []
   );
