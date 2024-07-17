@@ -4,7 +4,7 @@ import Box from '@mui/material/Box';
 import Divider from '@mui/material/Divider';
 import TextField from '@mui/material/TextField';
 
-export function UseEffectTest() {
+export default function UseEffectTest() {
   console.log('내부함수 실행');
   /**-------------------------------- useState --------------------------------------*/
   const [bool1, setBool1] = useState<boolean>(false);

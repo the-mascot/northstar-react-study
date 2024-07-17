@@ -1,5 +1,5 @@
 import { Box, Button, Modal, Typography } from '@mui/material';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function RenderTest() {
   const [open, setOpen] = useState<boolean>(false);
@@ -34,10 +34,16 @@ const style = {
 function ChildrenComponent({ open, bool, setBool }: Props) {
   const [modalBtn, setModalBtn] = useState(false);
   console.log('ChildrenComponent 호출');
+
   const hello = () => {
     console.log('hello 호출');
     return '안녕하세요';
   }
+
+  useEffect(() => {
+    console.log('ChildrenComponent useEffect 호출');
+  }, [])
+
   return (
     <Modal open={open}>
       <Box sx={style}>
@@ -49,4 +55,3 @@ function ChildrenComponent({ open, bool, setBool }: Props) {
     </Modal>
   );
 }
-

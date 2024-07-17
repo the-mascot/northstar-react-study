@@ -74,7 +74,14 @@ export function UseMemoTest() {
         세번째 컴포넌트는 deps 에 bool2 를 넣어 bool2가 변경되는 버튼2를 눌러야 변경된다.
       </Typography>
 
-      <Button color="primary" onClick={() => setBool1(!bool1)}>버튼1</Button>
+      <Button
+        variant="contained"
+        color="warning"
+        onClick={() => setBool1(!bool1)}
+        sx={{ ml: 3 }}
+      >
+        버튼1
+      </Button>
 
       {/** useMemo 사용하지 않은 케이스 */}
       <Box>
@@ -92,7 +99,14 @@ export function UseMemoTest() {
 
       {/** useMemo, deps bool2 사용 한 케이스 */}
       <Box>
-        <Button color="info" onClick={() => setBool2(!bool2)}>버튼2</Button>
+        <Button
+          variant="contained"
+          color="info"
+          onClick={() => setBool2(!bool2)}
+          sx={{ ml: 3 }}
+        >
+          버튼2
+        </Button>
         <Typography variant="h4" sx={{ margin: 3 }}>
           {memoizedValue3}
         </Typography>

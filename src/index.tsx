@@ -6,13 +6,14 @@ import App from './App';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
+import LoadingSpinner from './components/LoadingSpinner';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <BrowserRouter>
-    <Suspense>
+    <Suspense fallback={<LoadingSpinner />}>
       <App />
     </Suspense>
   </BrowserRouter>

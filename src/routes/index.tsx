@@ -1,11 +1,15 @@
 import { useRoutes } from 'react-router-dom';
 import { paths } from 'src/routes/paths';
 import Layout from '../layouts/layout';
-import Home from '../pages/home';
-import { UseEffectTest } from '../pages/use-effect-test';
 import { UseMemoTest } from '../pages/use-memo-test';
 import { UseCallbackTest } from '../pages/use-callback-test';
 import RenderTest from '../pages/render-test';
+import UseEffectTest from 'src/pages/use-effect-test';
+import Home from 'src/pages/home';
+
+import { lazy } from 'react';
+//const Home = lazy(() => import('src/pages/home'));
+//const UseEffectTest = lazy(() => import('src/pages/use-effect-test'));
 
 export default function Router() {
   return useRoutes([

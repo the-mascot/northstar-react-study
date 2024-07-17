@@ -13,7 +13,17 @@ export function UseCallbackTest() {
     functionEquality();
   }, []);
 
-  const fetchData = useCallback(() => {
+/*  const fetchData = () => {
+    axios
+      .get('https://jsonplaceholder.typicode.com/posts')
+      .then((response) => response.data)
+      .then((data) => {
+        setData(data);
+        console.log(data);
+      });
+  };*/
+
+/*  const fetchData = useCallback(() => {
     axios
       .get('https://jsonplaceholder.typicode.com/posts')
       .then((response) => response.data)
@@ -25,14 +35,14 @@ export function UseCallbackTest() {
 
   useEffect(() => {
     fetchData();
-  }, [fetchData]);
+  }, [fetchData]);*/
 
   /**
    * 함수 동등성
    * add1 과 add2 는 같은 기능의 함수라도 객체 참조주소가 다르기 때문 에 === 결과는 false 이다
    * */
   const functionEquality = () => {
-    console.log(add1 === add2);
+    // console.log(add1 === add2);
   };
   const add1 = () => 1 + 2;
   const add2 = () => 1 + 2;
@@ -58,7 +68,14 @@ export function UseCallbackTest() {
       <Typography variant="h6" sx={{ margin: 3 }} color="gray">
         자식 컴포넌트 - useCallback 은 useCallback 을 사용하여 기존 함수가 반환되어 리렌더링 되지 않는다.
       </Typography>
-      <Button color="primary" onClick={() => setBool1(!bool1)}>부모컴포넌트</Button>
+      <Button
+        variant="contained"
+        color="primary"
+        onClick={() => setBool1(!bool1)}
+        sx={{ ml: 3 }}
+      >
+        부모컴포넌트
+      </Button>
       {/** 자식 컴포넌트 */}
       <MemoButton handleOnClick={handleOnClick} />
       {/** 자식 컴포넌트 - useCallback */}
@@ -72,12 +89,19 @@ type Props = {
 };
 
 /*자식 컴포넌트*/
-function SonButton({ handleOnClick }: Props) {
-  console.log('=====[SonButton]===== 렌더링');
+function ChildrenButton({ handleOnClick }: Props) {
+  console.log('=====[ChildrenButton]===== 렌더링');
 
   return (
     <Box sx={{ mt: 3 }}>
-      <Button color="success" onClick={handleOnClick}>자식 컴포넌트</Button>
+      <Button
+        variant="contained"
+        color="success"
+        onClick={handleOnClick}
+        sx={{ ml: 3 }}
+      >
+        자식 컴포넌트
+      </Button>
     </Box>
   );
 }
@@ -88,11 +112,18 @@ function CallbackButton({ handleOnClick }: Props) {
 
   return (
     <Box sx={{ mt: 3 }}>
-      <Button color="error" onClick={handleOnClick}>자식 컴포넌트 - useCallback</Button>
+      <Button
+        variant="contained"
+        color="error"
+        onClick={handleOnClick}
+        sx={{ ml: 3 }}
+      >
+        자식 컴포넌트 - useCallback
+      </Button>
     </Box>
   );
 }
 
 /*React.memo() 사용*/
-const MemoButton = React.memo(SonButton);
+const MemoButton = React.memo(ChildrenButton);
 const MemoCallbackButton = React.memo(CallbackButton);
