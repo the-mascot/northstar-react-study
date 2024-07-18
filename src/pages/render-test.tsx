@@ -6,7 +6,14 @@ export default function RenderTest() {
   const [bool, setBool] = useState<boolean>(false);
   return (
     <Box>
-      <Button variant="outlined" color="primary" onClick={() => setOpen(true)}>모달 OPEN</Button>
+      <Button
+        variant="contained"
+        color="primary"
+        onClick={() => setOpen(true)}
+        sx={{ ml: 3 }}
+      >
+        모달 OPEN
+      </Button>
       <ChildrenComponent open={open} bool={bool} setBool={setBool} />
     </Box>
   );
@@ -32,7 +39,7 @@ const style = {
 
 /*자식컴포넌트*/
 function ChildrenComponent({ open, bool, setBool }: Props) {
-  const [modalBtn, setModalBtn] = useState(false);
+  const [childrenBool, setChildrenBool] = useState(false);
   console.log('ChildrenComponent 호출');
 
   const hello = () => {
@@ -47,9 +54,9 @@ function ChildrenComponent({ open, bool, setBool }: Props) {
   return (
     <Modal open={open}>
       <Box sx={style}>
-        <Typography variant="h4">모달</Typography>
-        <Typography variant="h4">{hello()}</Typography>
-        <Button variant="outlined" onClick={() => setModalBtn(!modalBtn)}>modalBtn state 변경</Button>
+        <Typography variant="h4" sx={{ mb: 2 }}>자식 컴포넌트</Typography>
+        <Typography variant="h6" sx={{ mb: 2 }}>{hello()}</Typography>
+        <Button variant="outlined" onClick={() => setChildrenBool(!childrenBool)}>childrenBool state 변경</Button>
         <Button variant="outlined" color="success" onClick={() => setBool(!bool)}>open 변경</Button>
       </Box>
     </Modal>

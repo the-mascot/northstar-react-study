@@ -6,8 +6,7 @@ import { UseCallbackTest } from '../pages/use-callback-test';
 import RenderTest from '../pages/render-test';
 import UseEffectTest from 'src/pages/use-effect-test';
 import Home from 'src/pages/home';
-
-import { lazy } from 'react';
+import ContextTest from '../pages/context-test';
 //const Home = lazy(() => import('src/pages/home'));
 //const UseEffectTest = lazy(() => import('src/pages/use-effect-test'));
 
@@ -53,5 +52,13 @@ export default function Router() {
         </Layout>
       )
     },
+    {
+      path: paths.test.context,
+      element: (
+        <Layout>
+          <ContextTest />
+        </Layout>
+      )
+    }
   ]);
 }

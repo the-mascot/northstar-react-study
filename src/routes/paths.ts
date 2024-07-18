@@ -4,6 +4,7 @@ export const paths = {
     useEffect: '/test/effect',
     render: '/test/render',
     useMemo: '/test/memo',
-    useCallback: '/test/callback'
+    useCallback: '/test/callback',
+    context: '/test/context'
   }
 }

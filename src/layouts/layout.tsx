@@ -1,6 +1,7 @@
 import Main from './main';
 import Header from './header';
 import Nav from 'src/layouts/nav';
+import { Box } from '@mui/material';
 
 // ----------------------------------------------------------------------
 
@@ -10,12 +11,12 @@ type Props = {
 
 export default function Layout({ children }: Props) {
     return (
-      <>
+      <Box>
         <Header />
 
         <Nav />
 
         <Main>{children}</Main>
-      </>
+      </Box>
     );
 }

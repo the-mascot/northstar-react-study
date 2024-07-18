@@ -13,7 +13,7 @@ export function UseCallbackTest() {
     functionEquality();
   }, []);
 
-/*  const fetchData = () => {
+  const fetchData = () => {
     axios
       .get('https://jsonplaceholder.typicode.com/posts')
       .then((response) => response.data)
@@ -21,7 +21,7 @@ export function UseCallbackTest() {
         setData(data);
         console.log(data);
       });
-  };*/
+  };
 
 /*  const fetchData = useCallback(() => {
     axios
@@ -35,7 +35,7 @@ export function UseCallbackTest() {
 
   useEffect(() => {
     fetchData();
-  }, [fetchData]);*/
+  }, [fetchData]);
 
   /**
    * 함수 동등성

@@ -25,6 +25,10 @@ export function useNavData() {
         title: 'useCallback Test',
         path: paths.test.useCallback
       },
+      {
+        title: 'context Test',
+        path: paths.test.context
+      }
     ],
     []
   );
