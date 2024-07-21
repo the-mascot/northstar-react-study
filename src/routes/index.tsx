@@ -7,6 +7,7 @@ import RenderTest from '../pages/render-test';
 import UseEffectTest from 'src/pages/use-effect-test';
 import Home from 'src/pages/home';
 import ContextTest from '../pages/context-test';
+import Login from '../pages/login';
 //const Home = lazy(() => import('src/pages/home'));
 //const UseEffectTest = lazy(() => import('src/pages/use-effect-test'));
 
@@ -17,6 +18,14 @@ export default function Router() {
       element: (
         <Layout>
           <Home />
+        </Layout>
+      )
+    },
+    {
+      path: paths.login,
+      element: (
+        <Layout>
+          <Login />
         </Layout>
       )
     },

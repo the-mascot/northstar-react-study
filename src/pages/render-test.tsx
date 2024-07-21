@@ -4,6 +4,8 @@ import { useEffect, useState } from 'react';
 export default function RenderTest() {
   const [open, setOpen] = useState<boolean>(false);
   const [bool, setBool] = useState<boolean>(false);
+  const [age, setAge] = useState<number>(0);
+  const [count, setCount] = useState<number>(0);
   return (
     <Box>
       <Button
@@ -15,6 +17,18 @@ export default function RenderTest() {
         모달 OPEN
       </Button>
       <ChildrenComponent open={open} bool={bool} setBool={setBool} />
+      <Box sx={{ mt: 2, ml: 3 }}>
+        <Typography>COUNT : {count}</Typography>
+        <Typography>AGE : {age}</Typography>
+        <Button variant="outlined" onClick={() => {
+          setCount(count + 1);
+
+          if (count < 3) {
+            setAge(age + 1);
+          }
+        }}>COUNT 증가</Button>
+
+      </Box>
     </Box>
   );
 }
