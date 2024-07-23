@@ -10,6 +10,10 @@ export function useNavData() {
         path: paths.home
       },
       {
+        title: 'POSTS',
+        path: paths.post.list
+      },
+      {
         title: 'useEffect Test',
         path: paths.test.useEffect
       },
@@ -28,6 +32,10 @@ export function useNavData() {
       {
         title: 'context Test',
         path: paths.test.context
+      },
+      {
+        title: 'useQuery Test',
+        path: paths.test.useQuery
       }
     ],
     []

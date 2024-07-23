@@ -8,6 +8,10 @@ import UseEffectTest from 'src/pages/use-effect-test';
 import Home from 'src/pages/home';
 import ContextTest from '../pages/context-test';
 import Login from '../pages/login';
+import { UseQueryTest } from '../pages/use-query-test';
+import { PostList } from '../pages/post/post-list';
+import PostDetail from '../pages/post/post-detail';
+import PostWrite from '../pages/post/post-write';
 //const Home = lazy(() => import('src/pages/home'));
 //const UseEffectTest = lazy(() => import('src/pages/use-effect-test'));
 
@@ -26,6 +30,30 @@ export default function Router() {
       element: (
         <Layout>
           <Login />
+        </Layout>
+      )
+    },
+    {
+      path: paths.post.list,
+      element: (
+        <Layout>
+          <PostList />
+        </Layout>
+      )
+    },
+    {
+      path: paths.post.detail,
+      element: (
+        <Layout>
+          <PostDetail />
+        </Layout>
+      )
+    },
+    {
+      path: paths.post.write,
+      element: (
+        <Layout>
+          <PostWrite />
         </Layout>
       )
     },
@@ -68,6 +96,14 @@ export default function Router() {
           <ContextTest />
         </Layout>
       )
-    }
+    },
+    {
+      path: paths.test.useQuery,
+      element: (
+        <Layout>
+          <UseQueryTest />
+        </Layout>
+      )
+    },
   ]);
 }

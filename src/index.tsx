@@ -6,7 +6,7 @@ import App from './App';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
-import LoadingSpinner from './components/LoadingSpinner';
+import LoadingSpinner from './components/loading-spinner';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement

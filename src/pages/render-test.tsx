@@ -1,11 +1,22 @@
 import { Box, Button, Modal, Typography } from '@mui/material';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 export default function RenderTest() {
   const [open, setOpen] = useState<boolean>(false);
   const [bool, setBool] = useState<boolean>(false);
   const [age, setAge] = useState<number>(0);
   const [count, setCount] = useState<number>(0);
+  const isFirstRender = useRef<boolean>(true);
+
+  useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
+    if (count < 3) {
+      setAge((prevState) => prevState + 1);
+    }
+  }, [count])
   return (
     <Box>
       <Button
@@ -21,11 +32,11 @@ export default function RenderTest() {
         <Typography>COUNT : {count}</Typography>
         <Typography>AGE : {age}</Typography>
         <Button variant="outlined" onClick={() => {
-          setCount(count + 1);
+          setCount((prevState) => prevState + 1);
 
-          if (count < 3) {
+/*          if (count < 3) {
             setAge(age + 1);
-          }
+          }*/
         }}>COUNT 증가</Button>
 
       </Box>
