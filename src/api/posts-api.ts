@@ -27,5 +27,5 @@ export const updatePost = async (data: Post): Promise<Post> => {
 
 /*게시글 DELETE*/
 export const deletePost = async (id: number) => {
-  return await axiosInstance.delete(`https://jsonplaceholder.typicode.com/posts/${id}`, { headers: headers }).then((response) => response.data);
+  return await axiosInstance.delete(`https://jsonplaceholder.typicode.com/posts/${id}`).then((response) => response.data);
 }

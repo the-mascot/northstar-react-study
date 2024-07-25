@@ -50,7 +50,7 @@ export default function PostDetail() {
   useEffect(() => {
     // 편집 가능여부 확인
     if (isSuccess && data) {
-      if (data.userId === userInfo.id) {
+      if ((data.userId === userInfo.id) && userInfo.isAuthenticated) {
         setIsAuthor(true);
       }
     }

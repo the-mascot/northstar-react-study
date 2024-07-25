@@ -1,5 +1,5 @@
 // react
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 // react-query
 import { useQuery } from '@tanstack/react-query';
 // apis
@@ -15,6 +15,8 @@ import { Post } from 'src/types/post.type';
 import { Button, Grid, SxProps, Table, TableBody, TableContainer, Theme, Typography } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import ErrorModal from '../../components/error-modal';
+import { useRecoilValue } from 'recoil';
+import { userInfoPState } from '../../states/recoils';
 
 
 /*테이블 헤더*/
@@ -27,6 +29,8 @@ const TABLE_HEAD = [
 export function PostList() {
   // navigate
   const navigate = useNavigate();
+  // recoil
+  const userInfo = useRecoilValue(userInfoPState);
 
   /**-------------------------------- useQuery --------------------------------------*/
   const { data, isSuccess, isLoading, isError } = useQuery<Post[]>({
@@ -58,16 +62,18 @@ export function PostList() {
   }
 
   return (
-    <Grid container xs={12} justifyContent="center" alignItems="center">
+    <Grid container justifyContent="center" alignItems="center">
       <Grid direction="column" container item xs={6} justifyContent="center" alignItems="center" spacing={3}>
         <Grid item>
           <Typography variant="h4">
             useQuery 테스트 샘플
           </Typography>
         </Grid>
-        <Grid container item justifyContent="flex-end">
-          <Button variant="contained" onClick={() => handleWriteClick()}>글쓰기</Button>
-        </Grid>
+        {userInfo.isAuthenticated && (
+          <Grid container item justifyContent="flex-end">
+            <Button variant="contained" onClick={() => handleWriteClick()}>글쓰기</Button>
+          </Grid>
+        )}
         <Grid justifyContent="center" item>
           <TableContainer>
             <Table size="medium" sx={{ minWidth: 960 }}>

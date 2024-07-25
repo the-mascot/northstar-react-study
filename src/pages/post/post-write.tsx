@@ -59,7 +59,7 @@ export default function PostWrite() {
   return (
     <>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <Grid container justifyContent="center" alignItems="center" xl={12}>
+        <Grid container justifyContent="center" alignItems="center">
           <Grid direction="column" container item xl={8} spacing={3}>
             <Grid item>
               <Typography align="center" variant="h4">글쓰기</Typography>
@@ -80,7 +80,10 @@ export default function PostWrite() {
           </Grid>
         </Grid>
       </form>
-      <OneButtonModal open={openModal} message="등록되었습니다." onClick={() => setOpenModal(false)} />
+      <OneButtonModal open={openModal} message="등록되었습니다." onClick={() => {
+        setOpenModal(false);
+        navigate('/posts');
+      }} />
     </>
   );
 }
