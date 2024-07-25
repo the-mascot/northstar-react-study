@@ -1,31 +1,18 @@
 // react
-import React, { ReactNode, useState } from 'react';
+import React from 'react';
 // react-query
 import { useQuery } from '@tanstack/react-query';
 // apis
 import { fetchPosts } from 'src/api/posts-api';
 // components
 import TableHeadCustom from 'src/components/table-head-custom';
-import OneButtonModal from 'src/components/one-button-modal';
 import LoadingSpinner from 'src/components/loading-spinner';
 import PostRow from 'src/components/post/post-row';
 import TableNoData from 'src/components/table-no-data';
 // types
 import { Post } from 'src/types/post.type';
 // @mui
-import {
-  Button,
-  Card,
-  Grid,
-  Typography,
-  Table,
-  TableBody,
-  TableRow,
-  TableCell,
-  TableContainer,
-  SxProps,
-  Theme
-} from '@mui/material';
+import { Button, Grid, SxProps, Table, TableBody, TableContainer, Theme, Typography } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import ErrorModal from '../../components/error-modal';
 
@@ -40,6 +27,7 @@ const TABLE_HEAD = [
 export function PostList() {
   // navigate
   const navigate = useNavigate();
+
   /**-------------------------------- useQuery --------------------------------------*/
   const { data, isSuccess, isLoading, isError } = useQuery<Post[]>({
     queryKey: ['posts'],
@@ -57,6 +45,7 @@ export function PostList() {
   if (isError) {
     return <ErrorModal />;
   }
+
   /**-------------------------------- 이벤트 헨들러 --------------------------------------*/
   /*테이블 ROW 클릭이벤트*/
   const handleRowClick = (id: number) => {

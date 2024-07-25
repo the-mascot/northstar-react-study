@@ -13,11 +13,11 @@ import { fetchPost, updatePost } from 'src/api/posts-api';
 // types
 import { Post } from 'src/types/post.type';
 // components
+import ErrorModal from 'src/components/error-modal';
 import OneButtonModal from 'src/components/one-button-modal';
+import LoadingSpinner from 'src/components/loading-spinner';
 // @mui
 import { Button, Grid, TextField, Typography } from '@mui/material';
-import LoadingSpinner from 'src/components/loading-spinner';
-import ErrorModal from 'src/components/error-modal';
 
 interface formType {
   title: string;
@@ -35,7 +35,9 @@ export default function PostEdit() {
   const [openModal, setOpenModal] = useState<boolean>(false);
   // useForm
   const { register, handleSubmit, setValue, formState: { errors } } = useForm<formType>();
+  // useQuery
   const queryClient = useQueryClient();
+
   /**-------------------------------- useQuery --------------------------------------*/
   /*post 데이터 fetch*/
   const { data, isSuccess, isLoading, isError } = useQuery<Post>({
@@ -43,7 +45,9 @@ export default function PostEdit() {
     queryFn: () => fetchPost(parseInt(id as string)),
     enabled: !!id
   });
+
   /**-------------------------------- useMutation --------------------------------------*/
+  /*post 데이터 업데이트*/
   const mutation = useMutation({
     mutationFn: updatePost,
     onSuccess: (data) => {

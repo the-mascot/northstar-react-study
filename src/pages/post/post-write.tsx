@@ -1,13 +1,20 @@
-import { Button, Grid, TextField, Typography } from '@mui/material';
+// react
+import { useState } from 'react';
+// recoil
+import { useRecoilValue } from 'recoil';
+import { userInfoPState } from 'src/states/recoils';
+// libraries
+import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { useMutation } from '@tanstack/react-query';
-import { createPost } from '../../api/posts-api';
-import { PostCreateReq } from '../../types/post.type';
-import { useForm } from 'react-hook-form';
-import { useRecoilValue } from 'recoil';
-import { userInfoPState } from '../../states/recoils';
-import { useState } from 'react';
-import OneButtonModal from '../../components/one-button-modal';
+// apis
+import { createPost } from 'src/api/posts-api';
+// types
+import { PostCreateReq } from 'src/types/post.type';
+// components
+import OneButtonModal from 'src/components/one-button-modal';
+// @mui
+import { Button, Grid, TextField, Typography } from '@mui/material';
 
 interface formType {
   title: string;
@@ -21,8 +28,11 @@ export default function PostWrite() {
   const userInfo = useRecoilValue(userInfoPState);
   // state
   const [openModal, setOpenModal] = useState<boolean>(false);
+  // useForm
+  const { register, handleSubmit, formState: { errors } } = useForm<formType>();
+
   /**-------------------------------- useMutation --------------------------------------*/
-  const { register, handleSubmit, reset, formState: { errors } } = useForm<formType>();
+  /*post 데이터 생성*/
   const mutation = useMutation({
     mutationFn: createPost,
     onSuccess: (data) => {
@@ -31,11 +41,7 @@ export default function PostWrite() {
     }
   });
 
-  /**-------------------------------- 이벤트 헨들러 --------------------------------------*/
-  const handleListClick = () => {
-    navigate('/posts');
-  }
-
+  /**-------------------------------- onSubmit --------------------------------------*/
   const onSubmit = (data: formType) => {
     const formData:PostCreateReq = {
       ...data,
@@ -43,6 +49,13 @@ export default function PostWrite() {
     }
     mutation.mutate(formData);
   }
+
+  /**-------------------------------- 이벤트 헨들러 --------------------------------------*/
+  const handleListClick = () => {
+    navigate('/posts');
+  }
+
+
   return (
     <>
       <form onSubmit={handleSubmit(onSubmit)}>

@@ -11,11 +11,11 @@ import { useMutation, useQuery } from '@tanstack/react-query';
 // components
 import ErrorModal from 'src/components/error-modal';
 import LoadingSpinner from 'src/components/loading-spinner';
+import OneButtonModal from 'src/components/one-button-modal';
 // types
 import { Post } from 'src/types/post.type';
 // @mui
-import { Button, Divider, Grid, Typography } from '@mui/material';
-import OneButtonModal from '../../components/one-button-modal';
+import { Button, Grid, Typography } from '@mui/material';
 
 export default function PostDetail() {
   // params
@@ -27,6 +27,7 @@ export default function PostDetail() {
   // state
   const [isAuthor, setIsAuthor] = useState<boolean>(false);
   const [openModal, setOpenModal] = useState<boolean>(false);
+
   /**-------------------------------- useQuery --------------------------------------*/
   /*post 데이터 fetch*/
   const { data, isSuccess, isLoading, isError } = useQuery<Post>({
@@ -34,6 +35,7 @@ export default function PostDetail() {
     queryFn: () => fetchPost(parseInt(id as string)),
     enabled: !!id
   });
+
   /**-------------------------------- useMutation --------------------------------------*/
   /*post 데이터 delete*/
   const mutation = useMutation({
