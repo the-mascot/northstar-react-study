@@ -23,8 +23,12 @@ export default function OneButtonModal({ open, message, onClick }: Props) {
   return (
     <Modal open={open}>
       <Box sx={style}>
-        <Typography variant="inherit" sx={{ mb: 2 }}>{message}</Typography>
-        <Button variant="outlined" color="success" onClick={() => onClick()}>open 변경</Button>
+        <Box>
+          <Typography variant="inherit"  sx={{ mb: 2 }}>{message}</Typography>
+        </Box>
+        <Box display="flex" justifyContent="center">
+          <Button variant="outlined" color="success" onClick={() => onClick()}>확인</Button>
+        </Box>
       </Box>
     </Modal>
   );

@@ -12,6 +12,7 @@ import { UseQueryTest } from '../pages/use-query-test';
 import { PostList } from '../pages/post/post-list';
 import PostDetail from '../pages/post/post-detail';
 import PostWrite from '../pages/post/post-write';
+import PostEdit from '../pages/post/post-edit';
 //const Home = lazy(() => import('src/pages/home'));
 //const UseEffectTest = lazy(() => import('src/pages/use-effect-test'));
 
@@ -54,6 +55,14 @@ export default function Router() {
       element: (
         <Layout>
           <PostWrite />
+        </Layout>
+      )
+    },
+    {
+      path: paths.post.edit,
+      element: (
+        <Layout>
+          <PostEdit />
         </Layout>
       )
     },

@@ -11,11 +11,21 @@ export const fetchPosts = async (): Promise<Post[]> => {
 };
 
 /*게시글 detail fetch*/
-export const fetchPost = async (id: string): Promise<Post> => {
+export const fetchPost = async (id: number): Promise<Post> => {
   return await axiosInstance.get(`https://jsonplaceholder.typicode.com/posts/${id}`).then((response) => response.data);
 };
 
 /*게시글 POST*/
-export const createPost = async (data: PostCreateReq) => {
+export const createPost = async (data: PostCreateReq): Promise<Post> => {
   return await axiosInstance.post('https://jsonplaceholder.typicode.com/posts', data, { headers: headers }).then((response) => response.data);
+}
+
+/*게시글 PUT*/
+export const updatePost = async (data: Post): Promise<Post> => {
+  return await axiosInstance.put(`https://jsonplaceholder.typicode.com/posts/${data.id}`, data, { headers: headers }).then((response) => response.data);
+}
+
+/*게시글 DELETE*/
+export const deletePost = async (id: number) => {
+  return await axiosInstance.delete(`https://jsonplaceholder.typicode.com/posts/${id}`, { headers: headers }).then((response) => response.data);
 }
